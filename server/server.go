@@ -42,7 +42,9 @@ func (s *Server) Start(key string) {
 	fmt.Println("Server Started on port " + s.port)
 	s.shutdown = ""
 	http.Handle("/", s.router)
-	s.router.HandleFunc("/gcd", aaa)
+	s.router.HandleFunc("/gcd", func(w http.ResponseWriterm r *http.Request){
+		print("hello u noob")
+	})
 	s.router.HandleFunc("/hello", sayHello)
 	s.router.HandleFunc("/shutdown", func(w http.ResponseWriter, r *http.Request) {
 		var auth shutdownAuth
